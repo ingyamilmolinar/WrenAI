@@ -68,6 +68,9 @@ COPY --from=builder /app/node_modules/getopts ./node_modules/getopts
 COPY --from=builder /app/node_modules/escalade/sync ./node_modules/escalade/sync
 COPY --from=builder /app/node_modules/.yarn-state.yml ./node_modules/.yarn-state.yml
 
+# Hack to load basePath as env var
+RUN sed -i -e 's/"REPLACE_ME_BASE_PATH"/process.env.BASE_PATH/' server.js
+
 EXPOSE 3000
 
 ENV PORT 3000

@@ -31,6 +31,10 @@ const nextConfig = withLess({
     };
     return config;
   },
+  // hack to load basePath as an env var
+  publicRuntimeConfig: {
+    basePath: 'REPLACE_ME_BASE_PATH',
+  },
   // routes redirect
   async redirects() {
     return [
